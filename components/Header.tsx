@@ -1,4 +1,4 @@
-// components/layout/Header.tsx
+// components/Header.tsx
 "use client";
 
 import {useState} from "react";
@@ -56,40 +56,42 @@ export default function Header() {
     </Link>
 
     {/* Desktop Navigation */}
-    <div className="hidden lg:flex items-center space-x-8">
+    <div className="hidden lg:flex items-center space-x-1">
      {navigation.map((item) => (
       <div
        key={item.name}
-       className="relative">
+       className="relative py-2 px-3">
        {item.children ? (
-        <div
-         className="flex items-center space-x-1 cursor-pointer"
-         onMouseEnter={() => setServicesMenuOpen(true)}
-         onMouseLeave={() => setServicesMenuOpen(false)}>
-         <Link
-          href={item.href}
-          className={`font-medium transition-colors hover:text-cyan-600 ${
-           pathname === item.href ? "text-cyan-600" : "text-gray-700"
-          }`}>
-          {item.name}
-         </Link>
-         <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24">
-          <path
-           strokeLinecap="round"
-           strokeLinejoin="round"
-           strokeWidth={2}
-           d="M19 9l-7 7-7-7"
-          />
-         </svg>
+        <>
+         <div
+          className="flex items-center space-x-1 cursor-pointer group"
+          onMouseEnter={() => setServicesMenuOpen(true)}
+          onMouseLeave={() => setServicesMenuOpen(false)}>
+          <Link
+           href={item.href}
+           className={`font-medium transition-colors hover:text-cyan-600 ${
+            pathname === item.href ? "text-cyan-600" : "text-gray-700"
+           }`}>
+           {item.name}
+          </Link>
+          <svg
+           className="w-4 h-4 transition-transform group-hover:rotate-180"
+           fill="none"
+           stroke="currentColor"
+           viewBox="0 0 24 24">
+           <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 9l-7 7-7-7"
+           />
+          </svg>
+         </div>
 
          {/* Services Dropdown */}
          {servicesMenuOpen && (
           <div
-           className="absolute top-full left-0 mt-2 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2"
+           className="absolute top-full left-0 mt-0 w-64 bg-white rounded-lg shadow-xl border border-gray-200 py-2 z-50"
            onMouseEnter={() => setServicesMenuOpen(true)}
            onMouseLeave={() => setServicesMenuOpen(false)}>
            {item.children.map((child) => (
@@ -103,7 +105,7 @@ export default function Header() {
            ))}
           </div>
          )}
-        </div>
+        </>
        ) : (
         <Link
          href={item.href}

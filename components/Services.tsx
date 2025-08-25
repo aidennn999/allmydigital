@@ -78,7 +78,7 @@ export default function Services() {
      {services.map((service, index) => (
       <motion.div
        key={index}
-       className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+       className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 flex flex-col h-full"
        initial={{opacity: 0, y: 20}}
        whileInView={{opacity: 1, y: 0}}
        viewport={{once: true}}
@@ -88,8 +88,8 @@ export default function Services() {
        <h3 className="text-xl font-semibold text-gray-900 mb-3">
         {service.title}
        </h3>
-       <p className="text-gray-600 mb-4">{service.description}</p>
-       <ul className="space-y-2">
+       <p className="text-gray-600 mb-4 flex-grow">{service.description}</p>
+       <ul className="space-y-2 mb-6">
         {service.features.map((feature, i) => (
          <li
           key={i}
@@ -108,9 +108,11 @@ export default function Services() {
          </li>
         ))}
        </ul>
-       <button className="mt-6 text-cyan-500 font-medium hover:text-cyan-600 transition-colors">
-        Pelajari lebih lanjut →
-       </button>
+       <div className="mt-auto">
+        <button className="w-full text-cyan-500 font-medium  transition-colors py-2 border border-cyan-500 rounded-lg hover:bg-cyan-500 hover:text-white">
+         Pelajari lebih lanjut →
+        </button>
+       </div>
       </motion.div>
      ))}
     </div>
